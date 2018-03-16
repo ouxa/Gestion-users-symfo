@@ -1,0 +1,22 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+	<div class="container ">
+		<hr class="colorgraph">
+		<div class="row ml-5 pt-2">
+			<hr class="colorgraph">
+    		<h1 class="pl-5">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h1>
+    		<hr class="colorgraph">
+    	</div>
+    	<hr class="colorgraph">
+    	<div class="row text-center">
+    		<div class="col-xs-6 col-sm-6 col-md-6 offset-3">
+				<p><a href="{{ path('espace_page') }}" class="btn btn-success btn-lg" >Your Acount</a></p>
+			</div>
+    	</div>
+    </div>
+
+    
+{% endblock fos_user_content %}

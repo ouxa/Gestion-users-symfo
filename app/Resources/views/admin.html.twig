@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	
+	<div >
+		        
+	    <p><a href="{{ path('home_page') }}" class="btn btn-secondary btn-lg">back</a></p>
+
+    </div>
+
+	<div class="container ">
+		<h1 class="text-center">Espace Admin</h1>
+		<div class="row">
+       		 <div class="col-md-12">
+		        <div class="table-responsive">
+		        	 <a href="{{ path('add_page') }}" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new User</a>
+		                
+		                <table id="mytable" class="table table-bordred table-striped">
+		                   
+		                    <thead>
+			                   <th style="background-color: #BF00FF;color: white;">First Name</th>
+			                   <th style="background-color: #BF00FF;color: white;">Last Name</th>
+			                   <th style="background-color: #BF00FF;color: white;">User Name</th>
+			                   <th style="background-color: #BF00FF;color: white;">view</th>
+		                       <th style="background-color: #BF00FF;color: white;">Edit</th>
+		                       <th style="background-color: #BF00FF;color: white;">Delete</th>
+		                    </thead>
+						    <tbody>
+						    	{% for user in users %}
+						    
+								    <tr>
+									    
+									    <td>{{ user.firstname }}</td>
+									    <td>{{ user.lastname }}</td>
+									    <td>{{ user.username }}</td>
+
+									    <td><a href="{{ path('details_page', { 'id': user.id }) }}" class="btn btn-success btn-xs" data-title="view" ><span class="glyphicon glyphicon-eye-open"></span></a></p></td>
+
+									    <td><a href="{{ path('update_page', { 'id': user.id }) }}" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+
+									    <td><a href="{{ path('delete_page', { 'id': user.id }) }}" class="btn btn-danger btn-xs confirmation" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></p></td>
+
+									    <script type="text/javascript">
+										    var elems = document.getElementsByClassName('confirmation');
+										    var confirmIt = function (e) {
+										        if (!confirm('Are you sure?')) e.preventDefault();
+										    };
+										    for (var i = 0, l = elems.length; i < l; i++) {
+										        elems[i].addEventListener('click', confirmIt, false);
+										    }
+										</script>
+								    </tr>
+							    {% endfor %} 
+							</tbody>
+			            </table>
+	                
+	            </div>
+	         </div>
+		</div>
+	</div>
+
+
+{% endblock %}

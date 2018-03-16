@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') }}">
+    </head>
+    <body>
+        {% for flash_message in app.session.flashbag.get('notice') %}
+          <div class="alert alert-success">  {{flash_message}}</div>
+        {% endfor %}
+
+        {% for flash_message in app.session.flashbag.get('error') %}
+          <div class="alert alert-danger">  {{flash_message}}</div>
+        {% endfor %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.slim.js') }}"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
+    </body>
+</html>
